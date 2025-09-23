@@ -1,5 +1,5 @@
 plugins {
-    id("java")
+    id 'java'
 }
 
 group = "io.github.leralix"
@@ -7,9 +7,32 @@ version = "0.1.0"
 
 repositories {
     mavenCentral()
+
+    maven {
+        name = 'spigot-repo'
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+    maven {
+        name = 'paper-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+
+    // DiscordSRV
+    maven {
+        name = 'discordsrv-repo'
+        url = 'https://nexus.scarsz.me/content/groups/public/'
+    }
 }
 
 dependencies {
+    compileOnly 'org.spigotmc:spigot-api:1.20.4-R0.1-SNAPSHOT'
+    compileOnly 'com.discordsrv:discordsrv:1.27.0'
+    compileOnly 'net.dv8tion:JDA:5.0.0-beta.24'
+    compileOnly 'io.github.leralix:tan-api:0.5.2'
+    compileOnly 'io.github.leralix:sphere-lib:0.5.2'
+
+
     testImplementation(platform("org.junit:junit-bom:5.10.0"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }

@@ -1,0 +1,22 @@
+# _______       _   _            _____  _                       _  _____
+#|__   __|/\   | \ | |          |  __ \(_)                     | |/ ____|
+#   | |  /  \  |  \| |  ______  | |  | |_ ___  ___ ___  _ __ __| | (___  _ ____   __
+#   | | / /\ \ | . ` | |______| | |  | | / __|/ __/ _ \| '__/ _` |\___ \| '__\ \ / /
+#   | |/ ____ \| |\  |          | |__| | \__ \ (_| (_) | | | (_| |____) | |   \ V /
+#    _/_/    \_\_| \_|          |_____/|_|___/\___\___/|_|  \__,_|_____/|_|    \_/
+                                                                                    
+
+
+# Default language :
+# Help us translate on https://crowdin.com/project/town-and-nation 💖
+# Available languages : en,
+language: en
+
+
+# By default, all messages are broadcasted the main channel.
+# You can override this by specifying a channel ID :
+# Default is -1 (disabled).
+mainChannelId: -1
+
+
+

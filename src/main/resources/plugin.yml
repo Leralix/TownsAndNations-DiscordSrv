@@ -1,0 +1,7 @@
+name: TownsAndNations-DiscordSrv
+version: '${version}'
+main: io.github.leralix.TownsAndNationsDiscordSrv
+api-version: "1.19"
+authors: [ Leralix ]
+depend: [TownsAndNations]
+description: DiscordSRV integration for Towns and Nations
