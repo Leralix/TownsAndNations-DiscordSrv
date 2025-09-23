@@ -13,10 +13,6 @@
 language: en
 
 
-# By default, all messages are broadcasted the main channel.
-# You can override this by specifying a channel ID :
-# Default is -1 (disabled).
-mainChannelId: -1
-
-
+# Embedded message color
+embededColor : "#023E8A"
 

@@ -2,10 +2,11 @@ package io.github.leralix.eventListener;
 
 import github.scarsz.discordsrv.DiscordSRV;
 import github.scarsz.discordsrv.dependencies.jda.api.EmbedBuilder;
+import github.scarsz.discordsrv.dependencies.jda.api.entities.TextChannel;
+import io.github.leralix.Constants;
 import io.github.leralix.lang.Lang;
 import org.tan.api.events.*;
 
-import java.awt.*;
 import java.time.Instant;
 import java.util.logging.Logger;
 
@@ -127,20 +128,27 @@ public class NewsBroadcast implements TanListener {
     }
 
     private void sendMessage(String title, String description) {
-        final var mainChannel = discordSrvApi.getMainTextChannel();
-        if (mainChannel == null){
-            pluginLogger.warning("DiscordSRV main channel was null, unable to send messages");
-            return;
-        }
+
+
+        final var mainChannel = getPostChannel();
 
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle(title)
                 .setDescription(description)
-                .setColor(Color.CYAN)
+                .setColor(Constants.getEmbededColor())
                 .setFooter("Towns and Nations - DiscordSRV", null)
                 .setTimestamp(Instant.now());
 
         mainChannel.sendMessageEmbeds(embed.build()).queue();
+    }
+
+    private TextChannel getPostChannel() {
+
+        int mainChannelId = Constants.getMainChannelId();
+        if (mainChannelId == -1) {
+            return discordSrvApi.getMainTextChannel();
+        }
+        return discordSrvApi.getOptionalTextChannel(String.valueOf(mainChannelId));
     }
 
 }

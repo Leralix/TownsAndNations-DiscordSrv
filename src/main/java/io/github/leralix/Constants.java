@@ -3,11 +3,14 @@ package io.github.leralix;
 import io.github.leralix.lang.LangType;
 import org.bukkit.configuration.file.FileConfiguration;
 
+import java.awt.*;
+
 public class Constants {
 
     private static LangType serverLang;
 
-    private static int mainChannelId = -1;
+    private static int mainChannelId;
+    private static Color embededColor;
 
     public static void init(FileConfiguration config) {
 
@@ -15,6 +18,7 @@ public class Constants {
 
         mainChannelId = config.getInt("mainChannelId", -1);
 
+        embededColor = Color.decode(config.getString("embededColor", "#023E8A"));
     }
 
     public static int getMainChannelId() {
@@ -23,5 +27,9 @@ public class Constants {
 
     public static LangType getServerLang() {
         return serverLang;
+    }
+
+    public static Color getEmbededColor() {
+        return embededColor;
     }
 }
