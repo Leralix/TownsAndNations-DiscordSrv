@@ -3,5 +3,5 @@ version: '${version}'
 main: io.github.leralix.TownsAndNationsDiscordSrv
 api-version: "1.19"
 authors: [ Leralix ]
-depend: [TownsAndNations]
+depend: [TownsAndNations, DiscordSRV]
 description: DiscordSRV integration for Towns and Nations

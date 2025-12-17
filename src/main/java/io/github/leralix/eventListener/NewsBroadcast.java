@@ -2,7 +2,6 @@ package io.github.leralix.eventListener;
 
 import github.scarsz.discordsrv.DiscordSRV;
 import github.scarsz.discordsrv.dependencies.jda.api.EmbedBuilder;
-import github.scarsz.discordsrv.dependencies.jda.api.entities.TextChannel;
 import io.github.leralix.Constants;
 import io.github.leralix.lang.Lang;
 import org.tan.api.events.*;
@@ -18,11 +17,6 @@ public class NewsBroadcast implements TanListener {
     public NewsBroadcast(DiscordSRV discordSRV, Logger logger) {
         this.pluginLogger = logger;
         this.discordSrvApi = discordSRV;
-    }
-
-    @EventHandler
-    public void onAttackDeclared(AttackDeclaredEvent event) {
-        sendMessage(Lang.ATTACK_DECLARED_TITLE.get(), Lang.ATTACK_DECLARED.get(event.getAttackerTerritory().getName(), event.getDefenderTerritory().getName()));
     }
 
     @EventHandler
@@ -127,10 +121,62 @@ public class NewsBroadcast implements TanListener {
         sendMessage(Lang.LANDMARK_UNCLAIMED_NEWSLETTER_TITLE.get(), Lang.LANDMARK_UNCLAIMED_NEWSLETTER.get(event.getOldOwner().getName(), event.getLandmark().getName()));
     }
 
+    @EventHandler
+    public void onWarStart(WarStartEvent event){
+        sendMessage(
+                Lang.WAR_DECLARED_TITLE.get(),
+                Lang.WAR_DECLARED.get(event.getAttacker().getName(), event.getDefender().getName())
+        );
+    }
+
+    @EventHandler
+    public void onWarEnd(WarEndEvent event){
+        sendMessage(
+                Lang.WAR_END_TITLE.get(),
+                Lang.WAR_END.get(
+                        event.getDefeated().getName(),
+                        event.getWinner().getName(),
+                        event.getAppliedWargoals().size()
+                )
+        );
+    }
+
+    @EventHandler
+    public void onAttackStart(AttackDeclaredEvent attackDeclaredEvent){
+        sendMessage(
+                Lang.ATTACK_START_TITLE.get(),
+                Lang.ATTACK_START.get(
+                        attackDeclaredEvent.getAttackerTerritory().getName(),
+                        attackDeclaredEvent.getDefenderTerritory().getName()
+                )
+        );
+    }
+
+    @EventHandler
+    public void onAttackEnd(AttackEndedEvent attackEndedEvent){
+
+        var results = attackEndedEvent.getResults();
+
+        String nbAttackerCasualties = Integer.toString(results.getNbDeathsAttacker());
+        String nbDefendersCasualties = Integer.toString(results.getNbDeathsDefender());
+        String nbChunkCaptured = Integer.toString(results.getNbChunkCaptured());
+        String nbFortsCaptured = Integer.toString(results.getNbFortsCaptured());
+
+
+        sendMessage(
+                Lang.ATTACK_RESULT_TITLE.get(),
+                Lang.ATTACK_RESULT.get(
+                        attackEndedEvent.getAttackerTerritory().getName(),
+                        attackEndedEvent.getDefenderTerritory().getName(),
+                        nbAttackerCasualties,
+                        nbDefendersCasualties,
+                        nbChunkCaptured,
+                        nbFortsCaptured
+                )
+        );
+    }
+
     private void sendMessage(String title, String description) {
-
-
-        final var mainChannel = getPostChannel();
 
         EmbedBuilder embed = new EmbedBuilder()
                 .setTitle(title)
@@ -139,16 +185,7 @@ public class NewsBroadcast implements TanListener {
                 .setFooter("Towns and Nations - DiscordSRV", null)
                 .setTimestamp(Instant.now());
 
-        mainChannel.sendMessageEmbeds(embed.build()).queue();
-    }
-
-    private TextChannel getPostChannel() {
-
-        int mainChannelId = Constants.getMainChannelId();
-        if (mainChannelId == -1) {
-            return discordSrvApi.getMainTextChannel();
-        }
-        return discordSrvApi.getOptionalTextChannel(String.valueOf(mainChannelId));
+        discordSrvApi.getOptionalTextChannel(Constants.getMainChannelName()).sendMessageEmbeds(embed.build()).queue();
     }
 
 }

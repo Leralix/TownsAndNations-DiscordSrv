@@ -9,20 +9,20 @@ public class Constants {
 
     private static LangType serverLang;
 
-    private static int mainChannelId;
+    private static String mainChannelName;
     private static Color embededColor;
 
     public static void init(FileConfiguration config) {
 
         serverLang = LangType.fromCode(config.getString("language", "en"));
 
-        mainChannelId = config.getInt("mainChannelId", -1);
+        mainChannelName = config.getString("broadcastChannel", "");
 
         embededColor = Color.decode(config.getString("embededColor", "#023E8A"));
     }
 
-    public static int getMainChannelId() {
-        return mainChannelId;
+    public static String getMainChannelName() {
+        return mainChannelName;
     }
 
     public static LangType getServerLang() {

@@ -1,10 +1,4 @@
 language:
- ATTACK_DECLARED_TITLE: "⚔️ Attack declared"
- ATTACK_DECLARED: "An attack has been declared by {0} against {1}"
- ATTACK_WON_BY_ATTACKER_TITLE: "⚔️ Attack won by attackers"
- ATTACK_WON_BY_ATTACKER: "The battle between {0} and {1} has been won by {2}"
- ATTACK_WON_BY_DEFENDER_TITLE: "🛡️ Attack won by defenders"
- ATTACK_WON_BY_DEFENDER: "The battle between {0} and {1} has been won by {2}"
  TERRITORY_SURRENDER_TITLE: "🏳️ Territory surrendered"
  TERRITORY_SURRENDER: "{0} has surrendered in the war against {1}"
  NEWSLETTER_DIPLOMACY_PROPOSAL_ACCEPTED_TITLE: "📜 Diplomacy proposal accepted"
@@ -42,4 +36,13 @@ language:
  PLAYER_APPLICATION_NEWSLETTER: "{0} has applied to join the town {1}"
  TOWN_JOIN_REGION_PROPOSAL_NEWSLETTER_TITLE: "{0} has applied to join the town {1}"
  TOWN_JOIN_REGION_PROPOSAL_NEWSLETTER: "{0} has proposed to join the region {1}"
+ # Wars
+ WAR_DECLARED_TITLE: "⚔️ War declared"
+ WAR_DECLARED: "War has been declared between {0} and {1}"
+ WAR_END_TITLE: "🕊️ End of war"
+ WAR_END: "{0} has capitulated in the war against {1}.\n {2} war goals has been applied"
+ ATTACK_START_TITLE: "🗺️ Attack planned"
+ ATTACK_START: "An attack has been planned by {0} against {1}"
+ ATTACK_RESULT_TITLE: "🏳️ Attack results"
+ ATTACK_RESULT: "Attack of {0} on {1} is finished\n Attackers casualties : {2}\n Defenders casualties : {3}\n chunk captured : {4}\n forts captured : {5}"
 

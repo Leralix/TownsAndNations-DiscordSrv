@@ -13,6 +13,9 @@
 language: en
 
 
+## Broadcasting channel
+# If the channel does not exist, events will be broadcasted in the default channel
+broadcastChannel : "tan"
 # Embedded message color
 embededColor : "#023E8A"
 
