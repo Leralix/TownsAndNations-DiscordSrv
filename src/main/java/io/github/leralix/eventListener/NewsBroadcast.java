@@ -20,20 +20,6 @@ public class NewsBroadcast implements TanListener {
     }
 
     @EventHandler
-    public void onAttackWonByAttacker(AttackWonByAttackerEvent event) {
-        String attackerTerritoryName = event.getAttackerTerritory().getName();
-        String defenderTerritoryName = event.getDefenderTerritory().getName();
-        sendMessage(Lang.ATTACK_WON_BY_ATTACKER_TITLE.get(), Lang.ATTACK_WON_BY_ATTACKER.get(attackerTerritoryName, defenderTerritoryName, attackerTerritoryName));
-    }
-
-    @EventHandler
-    public void onAttackWonByDefender(AttackWonByAttackerEvent event) {
-        String attackerTerritoryName = event.getAttackerTerritory().getName();
-        String defenderTerritoryName = event.getDefenderTerritory().getName();
-        sendMessage(Lang.ATTACK_WON_BY_DEFENDER_TITLE.get(), Lang.ATTACK_WON_BY_DEFENDER.get(attackerTerritoryName, defenderTerritoryName, defenderTerritoryName));
-    }
-
-    @EventHandler
     public void onDefenderAcceptDemands(AttackCancelledByDefenderEvent event) {
         sendMessage(Lang.TERRITORY_SURRENDER_TITLE.get(), Lang.TERRITORY_SURRENDER.get(event.getDefenderTerritory().getName(), event.getAttackerTerritory().getName()));
     }
