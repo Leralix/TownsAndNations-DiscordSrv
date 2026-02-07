@@ -35,6 +35,7 @@ public class TownsAndNationsDiscordSrv extends JavaPlugin {
         getLogger().log(Level.INFO, "Registering broadcast...");
         TanAPI.getInstance().getEventManager().registerEvents(new NewsBroadcast(discordSRV, logger));
 
+        getLogger().log(Level.INFO, "Loaded successfully !");
         loadedSuccessfully = true;
         getLogger().log(Level.INFO, "\u001B[33m------------Towns & Nations-Discord SRV---------------\u001B[0m");
     }
