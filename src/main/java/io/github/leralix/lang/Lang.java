@@ -6,6 +6,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.leralix.lib.utils.config.ConfigUtil;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.EnumMap;
 
 public enum Lang {
@@ -79,7 +80,7 @@ public enum Lang {
             }
 
             File file = new File(specificLangFolder, "main.yml");
-            ConfigUtil.saveAndUpdateResource(TownsAndNationsDiscordSrv.getInstance(), "lang/" + langType.getCode() + "/main.yml");
+            ConfigUtil.saveAndUpdateResource(TownsAndNationsDiscordSrv.getInstance(), "lang/" + langType.getCode() + "/main.yml", Collections.emptyList());
 
             if(langType.equals(serverLang)){
                 YamlConfiguration config = YamlConfiguration.loadConfiguration(file);

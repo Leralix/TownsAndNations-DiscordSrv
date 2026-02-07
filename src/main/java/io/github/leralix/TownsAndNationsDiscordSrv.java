@@ -8,6 +8,7 @@ import org.leralix.lib.utils.config.ConfigUtil;
 import org.tan.api.TanAPI;
 
 import java.io.File;
+import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -26,9 +27,9 @@ public class TownsAndNationsDiscordSrv extends JavaPlugin {
 
         getLogger().log(Level.INFO, "Loading configuration...");
 
-        ConfigUtil.saveAndUpdateResource(this, "config.yml");
+        var configFile = ConfigUtil.saveAndUpdateResource(this, "config.yml", Collections.emptyList());
 
-        Constants.init(getConfig());
+        Constants.init(configFile);
         Lang.loadTranslations(new File(getDataFolder(),"lang") , Constants.getServerLang());
 
         getLogger().log(Level.INFO, "Registering broadcast...");
